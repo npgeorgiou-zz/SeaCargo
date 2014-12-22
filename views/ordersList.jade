@@ -1,0 +1,26 @@
+block content
+    h3(style='font-size: 20px; font-weight: bold; color:white;')= tableTitle
+    table.table.table-striped.table-hover
+        thead
+            tr
+                th ID
+                th Date
+                th Name
+                th Address
+                th Edit
+                th Delete
+        tbody
+        - each e in list
+            tr
+                td
+                    a.useajax(href = 'orderdetails/'+e._id )  #{e._id}
+                td= e.orderDate
+                td= e.shipName
+                td= e.shipAddress
+                td
+                    button.btn.btn-blue.disabled(name='orders/'+e._id)
+                        span.glyphicon.glyphicon-pencil
+                td
+                    button.btn.btn-red(name='orders/'+e._id)
+                        span.glyphicon.glyphicon-trash
+//ss

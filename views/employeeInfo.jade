@@ -1,0 +1,53 @@
+block content
+    h3(style='font-size: 20px; font-weight: bold; color:white;')= tableTitle
+    table.table.table-striped.table-hover
+        tbody
+            tr
+                td Id
+                td= object._id
+            tr
+                td Last Name
+                td=object.lastName
+            tr
+                td First Name
+                td=object.firstName
+            tr
+                td Title
+                td=object.title
+            tr
+                td Title of Courtesy
+                td=object.titleOfCourtesy
+            tr
+                td Birth Date
+                td=object.birthDate
+            tr
+                td Hire Date
+                td=object.hireDate
+            tr
+                td Address
+                td=object.address
+            tr
+                td City
+                td=object.city
+            tr
+                td Region
+                td=object.region
+            tr
+                td ZIP
+                td=  object.postalCode
+            tr
+                td Country
+                td=object.country
+            tr
+                td Home Phone
+                td=object.homePhone
+            tr
+                td Extension
+                td=  object.extension
+            tr
+                td Spy Info
+                td=  object.notes
+    div.container-fluid
+        div.row-fluid
+            div.span4.offset4.text-center
+                a.useajax.btn.btn-default.useajax#backBtn(href='#', role='button') Back

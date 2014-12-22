@@ -1,0 +1,40 @@
+block content
+    h3(style='font-size: 20px; font-weight: bold; color:white;')= tableTitle
+    table.table.table-striped.table-hover
+        thead
+            tr
+                th ID
+                th Company Name
+                th Contact Name
+                th Contact Title
+                th Address
+                th City
+                th Region
+                th ZIP
+                th Country
+                th Phone
+                th Fax
+                th Edit
+                th Delete
+        tbody
+        - each e in list
+            tr
+                td
+                    a.useajax(href = 'orders/customer/'+e._id data-toggle='tooltip' data-placement='top' title="Customers's Orders")  #{e._id}
+                td
+                    a.useajax(href = 'customers/'+e._id data-toggle='tooltip' data-placement='top' title="Customer's Info")  #{e.companyName}
+                td= e.contactName
+                td= e.contactTitle
+                td= e.address
+                td= e.city
+                td= e.region
+                td= e.postalCode
+                td= e.country
+                td= e.phone
+                td= e.fax
+                td
+                    button.btn.btn-blue.disabled(name='customers/'+e._id)
+                        span.glyphicon.glyphicon-pencil
+                td
+                    button.btn.btn-red(name='customers/'+e._id)
+                        span.glyphicon.glyphicon-trash

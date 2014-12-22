@@ -1,0 +1,42 @@
+block content
+    h3(style='font-size: 20px; font-weight: bold; color:white;')= tableTitle
+    table.table.table-striped.table-hover
+
+        tbody
+            tr
+                td ID
+                td= object._id
+            tr
+                td Company Name
+                td=object.companyName
+            tr
+                td Contact Name
+                td=object.contactName
+            tr
+                td Contact Title
+                td=object.contactTitle
+            tr
+                td Address
+                td=object.address
+            tr
+                td City
+                td=object.city
+            tr
+                td Region
+                td=object.region
+            tr
+                td ZIP
+                td=object.postalCode
+            tr
+                td Country
+                td=object.country
+            tr
+                td Phone
+                td=object.phone
+            tr
+                td Fax
+                td=  object.fax
+    div.container-fluid
+        div.row-fluid
+            div.span4.offset4.text-center
+                a.useajax.btn.btn-default.useajax#backBtn(href='#', role='button') Back

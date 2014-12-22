@@ -1,0 +1,23 @@
+block content
+    h3(style='font-size: 20px; font-weight: bold; color:white;')= tableTitle
+    table.table.table-striped.table-hover
+        thead
+            tr
+                th ID
+                th Name
+                th Description
+                th Edit
+                th Delete
+        tbody
+        - each e in list
+            tr
+                td
+                    a.useajax(href = 'products/'+e._id )  #{e._id}
+                td= e.name
+                td= e.description
+                td
+                    button.btn.btn-blue.disabled(name='categories/'+e._id)
+                        span.glyphicon.glyphicon-pencil
+                td
+                    button.btn.btn-red(name='categories/'+e._id)
+                        span.glyphicon.glyphicon-trash

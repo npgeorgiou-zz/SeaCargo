@@ -1,0 +1,81 @@
+block content
+    h3(style='font-size: 20px; font-weight: bold; color:white;')= tableTitle
+    div.row
+        div.col-md-6
+            table.table
+                tr
+                    td Id:
+                    td=order._id
+                tr
+                    td Date:
+                    td=order.orderDate
+                tr
+                    td Required:
+                    td=order.requiredDate
+                tr
+                    td Shipped
+                    td=order.shippedDate
+        div.col-md-6
+            table.table
+                tr
+                    td Name:
+                    td=order.shipName
+                tr
+                    td Address:
+                    td=order.shipAddress
+                tr
+                    td City:
+                    td=order.shipCity
+                tr
+                    td Zip
+                    td=order.shipPostalCode
+                tr
+                    td Country
+                    td=order.shipCountry
+
+    table.table.table-striped.table-hover
+        thead
+            tr
+                th Product
+                th Unit Price
+                th Quantity
+                th Discount
+                th Price
+                th Company
+                th Emploee
+                th Edit
+                th Delete
+        tbody
+            -var sum = 0;
+            - for (var i=0; i<orderDetails.length; i++){
+                tr
+                    td= products[i].name
+                    td= orderDetails[i].unitPrice
+                    td= orderDetails[i].quantity
+                    td= orderDetails[i].discount
+                    td= products[i].unitPrice * orderDetails[i].quantity  * (1-orderDetails[i].discount)
+                    - sum = sum + products[i].unitPrice * orderDetails[i].quantity  * (1-orderDetails[i].discount)
+                    td
+                        a.useajax(href = 'customers/'+customer._id )  #{customer.companyName}
+                    td
+                        a.useajax(href = 'employees/'+emploee._id )  #{emploee.firstName + ' ' + emploee.lastName}
+                    td
+                        button.btn.btn-blue.disabled(name='orderdetails/'+orderDetails[i]._id)
+                            span.glyphicon.glyphicon-pencil
+                    td
+                        button.btn.btn-red(name='orderdetails/'+orderDetails[i]._id)
+                            span.glyphicon.glyphicon-trash
+            - }
+                tr
+                    td(style='font-size: 14px; font-weight: bold;') Total
+                    td
+                    td
+                    td
+                    td
+                    td
+                    td(style='font-size: 14px; font-weight: bold;')=sum
+
+    div.container-fluid
+        div.row-fluid
+            div.span4.offset4.text-center
+                a.useajax.btn.btn-default.useajax#backBtn(href='#', role='button') Back

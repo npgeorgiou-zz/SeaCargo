@@ -1,0 +1,35 @@
+block content
+    h3(style='font-size: 20px; font-weight: bold; color:white;')= tableTitle
+    table.table.table-striped.table-hover
+        thead
+            tr
+                th ID
+                th Name
+                th Category ID
+                th Quantity per Unit
+                th Unit Price
+                th Units in Stock
+                th Units on Order
+                th Reorder Level
+                th Discontinued
+                th Edit
+                th Delete
+        tbody
+        - each e in list
+            tr
+                td
+                    a.useajax(href = 'orders/product/'+e._id )  #{e._id}
+                td= e.name
+                td= e.categoryId
+                td= e.quantityPerUnit
+                td= e.unitPrice
+                td= e.unitsInStock
+                td= e.unitsOnOrder
+                td= e.reorderLevel
+                td= e.discontinued
+                td
+                    button.btn.btn-blue.disabled(name='products/'+e._id)
+                        span.glyphicon.glyphicon-pencil
+                td
+                    button.btn.btn-red(name='products/'+e._id)
+                        span.glyphicon.glyphicon-trash
