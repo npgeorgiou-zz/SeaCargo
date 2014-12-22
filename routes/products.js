@@ -19,7 +19,7 @@ router.get('/:productid', function (req, res) {
         if (err) {
             return err;
         }
-        res.render("productsList", {tableTitle: "Products in Category " + categoryid, list: products});
+        res.render("productsList", {tableTitle: "Products in Category " + productid, list: products});
 
     })
 });
