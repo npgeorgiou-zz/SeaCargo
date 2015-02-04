@@ -1,6 +1,6 @@
 # SeaCargo
 
-This is an exercise in building a Node server, using a noSQL DB, and sdoing erver-side templating using Jade.
+This is an exercise in building a Node server, using a noSQL DB, and doing server-side templating using Jade.
 
 
 ## Getting Started
