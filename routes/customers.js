@@ -1,8 +1,9 @@
-var express = require('express');
-var router = express.Router();
+var express  = require('express');
+var router   = express.Router();
+var sorter   = require('../util/sorter');
 var Customer = require("../model/customers");
 
-/* GET customers listing. */
+// GET customers
 router.get('/', function (req, res) {
     Customer.getAllCustomers(function (err, AllCustomers) {
         if (err) {
@@ -12,6 +13,7 @@ router.get('/', function (req, res) {
         res.render("customersList", {tableTitle: "All Customers", list: AllCustomers.sort(sorter)});
     })
 });
+
 //GET customer by id
 router.get('/:customerid', function (req, res) {
     var customerid = req.params.customerid;
@@ -24,24 +26,16 @@ router.get('/:customerid', function (req, res) {
     })
 });
 
+// DELETE customer by id
 router.delete('/:custid', function (req, res) {
     var custid = req.params.custid;
     Customer.deleteCustByCustId(custid, function (err, deletedDoc) {
         if (err) {
             return err;
         }
-        console.log(deletedDoc);
         res.end('/customers');
     })
 });
-
-var sorter = function (entry1, entry2) {
-    // This is a comparison function that will result in dates being sorted in
-    // ASCENDING order.
-    if (entry1._id > entry2._id) return 1;
-    if (entry1._id < entry2._id) return -1;
-    return 0;
-};
 
 module.exports = router;
 

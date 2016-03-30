@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
-//var dbURI = 'mongodb://localhost/northwind';
-var dbURI = "mongodb://kaptainplanet:66reggae@ds063879.mongolab.com:63879/mongolabdb";
+var config   = require('../config/config');
+
+var dbURI    = 'mongodb://' + config.db.user + ':' + config.db.password + '@ds063879.mongolab.com:63879/mongolabdb';
 mongoose.connect(dbURI);
 
 mongoose.connection.on('connected', function () {

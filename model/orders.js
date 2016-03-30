@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
-var db = require("./db");
-var Order = mongoose.model('Order');
+var db       = require("./db");
+var Order    = mongoose.model('Order');
 
 
 function getAllOrders(callback) {

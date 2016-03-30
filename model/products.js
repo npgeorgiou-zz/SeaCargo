@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
-var db = require("./db");
-var Product = mongoose.model('Product');
+var db       = require("./db");
+var Product  = mongoose.model('Product');
 
 function getAllProducts(callback) {
     Product.find({}, function (err, products) {

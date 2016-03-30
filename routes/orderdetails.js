@@ -1,42 +1,40 @@
-var express = require('express');
-var router = express.Router();
+var express     = require('express');
+var router      = express.Router();
 var OrderDetail = require("../model/orderDetails");
-var Product = require("../model/products");
-var Order = require("../model/orders");
-var Customer = require("../model/customers");
-var Employee = require("../model/employees");
+var Product     = require("../model/products");
+var Order       = require("../model/orders");
+var Customer    = require("../model/customers");
+var Employee    = require("../model/employees");
 
 
-/* GET orderdetails. */
+// GET orderdetails
 router.get('/:orderid', function (req, res) {
     var orderid = req.params.orderid;
     OrderDetail.getOrderDetailsByOrderId(orderid, function (err, details) {
         if (err) {
             return err;
         }
-        //make array with productids
+        // Make array with productids
         var productIds = [];
         details.forEach(function (entry) {
             productIds.push(entry.productId)
         });
-        //return products that match these ids
+        // Return products that match these ids
         Product.getProductsById(productIds, function (err, products) {
             if (err) {
                 return err;
             }
-            //get order from path (order id)
+            // Get order from path (order id)
             Order.getOrderByOrderId(orderid, function (err, order) {
                 if (err) {
                     return err;
                 }
-                //get customer
-                console.log(orderid);
-                console.log(order);
+                // Get customer
                 Customer.getCustomerById(order[0].customerId, function (err, cust) {
                     if (err) {
                         return err;
                     }
-                    //get emploee
+                    // Get emploee
                     Employee.getEmployeeById(order[0].employeeId, function (err, emploee) {
                         if (err) {
                             return err;
@@ -56,7 +54,6 @@ router.delete('/:orderdetailid', function (req, res) {
         if (err) {
             return err;
         }
-        console.log("### " + orderId);
         OrderDetail.deleteOrderDByOrderDId(orderdetailid, function (err, deletedDoc) {
             if (err) {
                 return err;

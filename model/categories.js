@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var db = require("./db");
+var db       = require("./db");
 var Category = mongoose.model('Category');
 
 function getAllCategories(callback) {
@@ -25,4 +25,4 @@ function deleteCategoryByCategoryId(categoryid, callback) {
 module.exports = {
     getAllCategories: getAllCategories,
     deleteCategoryByCategoryId: deleteCategoryByCategoryId
-}
+};
